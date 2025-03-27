@@ -2,11 +2,11 @@ README.md
 setup.py
 distortopia/__init__.py
 distortopia/__main__.py
-distortopia/__populatenome__.py
-distortopia/__segdistorters__.py
-distortopia/__simf1poly_.py
-distortopia/__simparents__.py
 distortopia/module.py
+distortopia/populatenome.py
+distortopia/segdistorters.py
+distortopia/simf1poly.py
+distortopia/simparents.py
 distortopia.egg-info/PKG-INFO
 distortopia.egg-info/SOURCES.txt
 distortopia.egg-info/dependency_links.txt

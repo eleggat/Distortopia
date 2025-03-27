@@ -1,1 +1,2 @@
-spinach_genome/*.fasta
+# Ignore egg metadata
+*.egg-info/
