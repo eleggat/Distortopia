@@ -110,14 +110,14 @@ A forward-time simulator capable of modeling complex demographic and evolutionar
 [vcftools](https://github.com/vcftools/vcftools) and [bcftools](https://github.com/samtools/bcftools):
 These are standard tools for filtering, summarizing, and manipulating VCF files. While they are useful for general variant processing, they do not offer simulation or distortion-specific workflows.
 
-[Distortopia] is unique in that it can:
+Distortopia is unique in that it can:
 
 - Use real or simulated VCF input from any diploid organism
 - Simulate hybrid genotypes
 - Detect markers with segregation distortion
 - Produce both summary tables and visualizations
 
-The program is intended to be lightweight, customizable, and CLI-driven with minimal user setup. To the author's knowledge, no current tool offers *this* combination of features, making it a useful utility for geneticists, educators, and bioinformatics researchers alike.
+The program is intended to be lightweight, customizable, and CLI-driven with minimal user setup. To the author's knowledge, no current tool offers *this* combination of features, making it an extremely useful utility for geneticists, educators, and bioinformatics researchers alike.
 
 
 
