@@ -1,89 +1,116 @@
 
-Spinach F1 Hybrid Simulation Project
+# Distortopia: 
+Simulating F1 Hybrids and Detecting Segregation Distortion from Genomic Data
 
-# VCF Simulation
+## What task/goal does this project accomplish and why is this useful?
 
-This mini-project simulates a Variant Call Format (VCF) file representing an F1 hybrid genome, which can be manipulated for genetic analysis and variant studies.
+This project provides users with a command-line tool to simulate F1 hybrid genomes and detect genomic regions with segregation distortion. Segregation distortion can indicate the presence of (a) selection, (b) incompatibility, or (c) meiotic drive making this a useful tool for population geneticists, breeders, and anyone studying hybridization.
 
-The mock VCF file will contain a chromosome map for a single individual. The program will allow users to:
+The project is designed to be general-purpose: any organism with variant data in VCF format and reference sequences in FASTA format can be used. This makes the tool widely applicable for simulation-based studies or exploring real hybrid genotypes.
 
-- Input two genome files and generate simulated genetic crosses
-- Apply segregation distortion patterns to create mock F1 chromosomes
-- Simulate chromosomes that are 1Mb in length, each with 1000 SNPs
- 
-The program accepts two parental variant files (**FASTA** or **VCF** format) and user-defined parameters for simulating recombination and SNP inheritance. 
+## What type of data/input should users provide to the program?
 
-The output will consist of:
-- A simulated VCF file representing the F1 hybrid chromosomes (combined variants from both parents)
-- [planned] **segregation distortion patterns** and summaries of inheritance
+The user will provide:
+- Two parent genotype files in VCF format (`parent1.vcf`, `parent2.vcf`)
+- A reference genome or chromosome assembly in FASTA format
+- *(Optional)* A real (or simulated) F1 VCF file from which to directly analyze segregation distortion
 
-### Installation
+Command-line arguments will allow users to toggle with the simulation and analysis steps.
 
-To install and run the program locally, follow these steps:
+## Where will the user data come from?
 
-1. Clone the repository to your local computer and populate your new repo
-```sh
-cd myproject-name #open repo directory
-git clone [https://github.com/YOUR-USERNAME/YOUR-REPOSITORY] #clone my github repo
+Data files can be downloaded from public repositories (NCBI, Ensembl) or generated using variant calling pipelines such as GATK, bcftools, or samtools.  
+
+Example file formats:
+
+```**VCF**:
+##fileformat=VCFv4.2
+##source=Distortopia
+#CHROM  POS    ID      REF     ALT     QUAL   FILTER  INFO FORMAT parent1
+chr1    10523   .       G       A       .      PASS    .    GT    0/1
+chr1    20831   .       T       C       .      PASS    .    GT    1/1
+chr1    31005   .       A       G       .      PASS    .    GT    0/0
 ```
-After you do that you'' want to create a README file and some text to it to describe [...]
+```**FASTA**:
+>chr1 length=30427671 assembly=GCF_000001405.39 source=Homo_sapiens
+AGCTGACCTAGGCTACCTTACGATCGATCGATCGATCGATGCTAGCTAGCTAGCTGATCGATCGATCGATCGA
+CGATCGATCGTACGTACGTAGCTAGCTAGCTAGCTAGCATCGATCGATCGATCGATCGTAGCTAGCTAGCTAG
 
-2. Install the required dependencies. If using **Conda**, you can install the required dependencies with:
+>chr2 length=242193529 assembly=GCF_000001405.39 source=Homo_sapiens
+TTGACGATCGATCGTACTGACTGATCGATCGATAGCTAGCTAGCTAGCTAACGTAGCTAGCTAGCTAGCTAGC
+GATCGATCGTAGCTAGCTGATCGATCGATGATCGTAGCTAGCTAGCATCGATCGATCGATCGATCGATCGTAG
 ```
+
+## How will users interact with the program?
+
+Users will interact with the program via a command-line interface (CLI). To install and run the program locally, they can follow these steps:
+
+1. **Clone the Repository**
+
+Navigate to the current working directory where you intent to clone the project, then run:
+```bash
+git clone https://github.com/YOUR-USERNAME/Distortopia.git
+cd Distortopia
+```
+
+2. **Install Dependencies**
+
+If using **conda**:
+```bash
 conda install python=3.10 biopython -c conda-forge
 ```
-Alternatively, you can install via 'pip':
-```
+Alternatively, via **pip**:
+```bash
 pip install biopython
 ```
-4. Once installed, execute the program using
+Additionaly dependencies (pandas, matplotlib) may be required depending on which modules are used.
 
-### Using the CLI Tool
+3. **Run the program*:**
 
-The program can be run from the terminal command line:
+ Execute the program using the -m flag or directly call on specific scripts. 
+
+ For example:
 ```bash
-python __simparents__.py --parent1 spinach_genome/parent1.vcf --parent2 spinach_genome/parent2.vcf --snp-count 1000
+python -m distortopia --simulate-f1 --parent1 data/parent1.vcf --parent2 data/parent2.vcf --output data/f1_hybrid.vcf
 
-python __simf1poly__.py
+python -m distortopia --detect-distortion --f1 data/f1_hybrid.vcf --output results/segdist_table.csv
 ```
 ```bash
-usage: python __simparents__.py
-       --parent1 PARENT1
-       --parent2 PARENT2
-       [--snp-count 1000]
-       [--chrom-length 1000000]
-       [--distortion]
-
-usage: python __simf1poly__.py
-       --parent1 PARENT1
-       --parent2 PARENT2
-       --output OUTPUT
-
 optional arguments:
- -h, --help			show this help message and exit
- --parent1 PARENT1 		path to first parental file (FASTA/VCF)
- --parent2 PARENT2 		path to second parental file (FASTA/VCF)
- --output OUTPUT 		path to the simulated F1 chromosome VCF file
+ -h, --help                 show this help message and exit
+ --parent1 PARENT1          path to first parental file (FASTA/VCF)
+ --parent2 PARENT2          path to second parental file (FASTA/VCF)
+ --output OUTPUT            path to the simulated F1 chromosome VCF file
  --snp-count SNP_COUNT  number of SNPs to simulate per chromosome (default: 1000)
  --chrom-length CHROM_LENGTH  chromosome length in base pairs (default: 1Mb)
- --distortion 			apply segregation distortion 
+ --distortion                      apply segregation distortion 
 ```
 
-These arguments will allow you to:
-- Simulate recombination using two parental variant files
-- Specify where the new F1 VCF file should be saved 
-- Alter the simulation, specifically the # of SNPs and length of each chromosome
-- Toggle with egregation distortion [in progress]
+## What type of output will the program produce? 
 
-### Sample Output
+The program will be able to generate:
 
-After running the program, the output of the VCF file should look something like this:
-```f1hybrid.vcf
-##fileformat = VCFv4.2
-##source = _simparents_.py
-##contig =<ID=1, length = 1000000>
+- Simulated VCF files of F1 hybrids
+- CSV tables showing observed vs. expected genotype frequencies
+- Diagnostic plots (histograms, barplots) for distorted regions
+- *(Optional)* Summary stats exported to JSON or HTML
 
-#CHROM  POS   ID   REF  ALT  QUAL  FILTER  INFO  FORMAT  F1_Hybrid
-1       1093  .    A    G    .     PASS    .     GT      0/1
-1       2011  .    C    T    .     PASS    .     GT      1/1
-```
+These outputs are suitable for visualization, downstream analysis, or direct reporting in scientific works.
+
+## What other tools currently exist to do this task, or something similar?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
