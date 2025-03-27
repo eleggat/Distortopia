@@ -119,4 +119,17 @@ Distortopia is unique in that it can:
 
 The program is intended to be lightweight, customizable, and CLI-driven with minimal user setup. To the author's knowledge, no current tool offers *this* combination of features, making it an extremely useful utility for geneticists, educators, and bioinformatics researchers alike.
 
+### Psuedocode 
+
+Pseudocode has been written directly into the corresponding Python file modules within the distortopia/ directory. Each script includes docstrings and inline comments that outline the purpose of its functions or classes. This includes:
+
+- __main__.py for command-line interface handling
+
+- __simf1poly__.py for F1 hybrid simulation from VCFs
+
+- __segdistorters__.py for detecting segregation distortion
+
+- [...]
+
+These serve as the backbone of the project and will be iteratively converted into fully functional code. This approach will ensure modular development and allow others to immediately begin contributing to and/or testing specific components.
 
