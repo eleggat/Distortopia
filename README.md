@@ -1,7 +1,7 @@
 
 # Distortopia
 
-Distortopia is a command-line tool to simulate F1 hybrid genomes and detect segregation distortion from diploid parental VCF inputs. It is designed for use with any organism and is useful for geneticists, breeders, and researchers studying hybridization, recombination, or marker bias.
+Distortopia is a command-line interface (CLI) tool to simulate F1 hybrid genomes and detect segregation distortion from diploid parental VCF inputs. It is designed for use with any organism and is useful for geneticists, breeders, and researchers studying hybridization, recombination, or marker bias.
 
 ---
 
