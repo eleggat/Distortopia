@@ -65,7 +65,7 @@ pip install biopython
 ```
 Additionaly dependencies (pandas, matplotlib) may be required depending on which modules are used.
 
-3. **Run the program*:**
+3. **Run the program:**
 
  Execute the program using the -m flag or directly call on specific scripts. 
 
