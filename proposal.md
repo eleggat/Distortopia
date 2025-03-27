@@ -99,6 +99,26 @@ These outputs are suitable for visualization, downstream analysis, or direct rep
 
 ## What other tools currently exist to do this task, or something similar?
 
+Few tools exist for simulating recombination, hybrid genomes, or exploring genetic variation patterns. Notable examples include:
+
+[recom-sim] (https://github.com/salanova-elliott/recom-sim):
+This Python-based simulator creates recombinant genomes using parental input genotypes and genetic maps. It is specially designed for modeling recombination under different biological scenarios, including crossover interference. However, the program focuses on recombination mechanics and does not include modules for segregation distortion detection or downstream variant filtering and visualization. Additionally, it assumes the use of a recombination map, whereas Distortopia simulates hybrids and distortion from VCF inputs alone, making it more general-purpose.
+
+[simuPOP](https://github.com/BoPeng/simuPOP):
+A forward-time simulator capable of modeling complex demographic and evolutionary scenarios. While the program is extremely flexible, its steep learning curve and scripting-heavy interface make it less accessible for quick hybrid simulations.
+
+[vcftools] and [bcftools]:
+These are standard tools for filtering, summarizing, and manipulating VCF files. While they are useful for general variant processing, they do not offer simulation or distortion-specific workflows.
+
+[Distortopia] is unique in that it can:
+
+- Use real or simulated VCF input from any diploid organism
+- Simulate hybrid genotypes
+- Detect markers with segregation distortion
+- Produce both summary tables and visualizations
+
+The program is intended to be lightweight, customizable, and CLI-driven with minimal user setup. To the author's knowledge, no current tool offers *this* combination of features, making it a useful utility for geneticists, educators, and bioinformatics researchers alike.
+
 
 
 
