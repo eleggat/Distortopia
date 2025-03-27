@@ -2,7 +2,7 @@
 """Main CLI interface for Distortopia."""
 
 import argparse
-from distortopia import __simf1poly__, __segdistorters__
+from distortopia import simf1poly, segdistorters
 
 def main():
     parser = argparse.ArgumentParser(description="Distortopia CLI")
