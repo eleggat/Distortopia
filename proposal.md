@@ -120,17 +120,3 @@ Distortopia is unique in that it can:
 The program is intended to be lightweight, customizable, and CLI-driven with minimal user setup. To the author's knowledge, no current tool offers *this* combination of features, making it an extremely useful utility for geneticists, educators, and bioinformatics researchers alike.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
